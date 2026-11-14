@@ -1,0 +1,126 @@
+/* LabelFill admin */
+:root {
+	--labelfill-g: #0b7a4b;
+	--labelfill-g2: #e7f4ec;
+}
+
+/* Product box */
+#labelfill .inside { margin: 0; padding: 0; }
+.labelfill-box { display: grid; grid-template-columns: minmax(0, 1fr) 372px; }
+.labelfill-l { padding: 18px 20px; min-width: 0; }
+.labelfill-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.labelfill-t { font-weight: 600; }
+.labelfill-pillw { margin-left: auto; }
+.labelfill-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; border-radius: 999px; padding: 2px 10px; white-space: nowrap; }
+.labelfill-pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.labelfill-pill.is-ok { color: var(--labelfill-g); background: var(--labelfill-g2); }
+.labelfill-pill.is-bad { color: #b32d2e; background: #fcf0f1; }
+.labelfill-pill.is-warn { color: #8a5a00; background: #fcf9e8; }
+.labelfill-pill.is-off { color: #50575e; background: #f0f0f1; }
+.labelfill-row { display: flex; gap: 8px; }
+.labelfill-in { flex: 1; min-width: 0; height: 40px; font-family: Menlo, Consolas, monospace; font-size: 13.5px; }
+.labelfill-go { height: 40px; padding: 0 16px; border: 0; border-radius: 6px; background: var(--labelfill-g); color: #fff; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.labelfill-go:hover, .labelfill-go:focus { background: #086640; }
+.labelfill-go:focus-visible { outline: 2px solid #0b3d26; outline-offset: 2px; }
+.labelfill-go[disabled] { opacity: .7; cursor: progress; }
+.labelfill-help { color: #646970; font-size: 12.5px; margin: 7px 0 0; }
+.labelfill-msg { margin-top: 14px; padding: 10px 12px; border-radius: 6px; border-left: 4px solid; font-size: 13px; }
+.labelfill-msg.is-ok { background: var(--labelfill-g2); border-color: var(--labelfill-g); }
+.labelfill-msg.is-bad { background: #fcf0f1; border-color: #d63638; }
+.labelfill-msg.is-warn { background: #fcf9e8; border-color: #dba617; }
+.labelfill-msg.is-info { background: #f0f6fc; border-color: #72aee6; }
+.labelfill-msg .button { margin-top: 8px; }
+.labelfill-changes { margin: 0 0 0 1.1em; list-style: disc; }
+.labelfill-data { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 18px; margin: 16px 0 0; }
+.labelfill-data div { min-width: 0; }
+.labelfill-data dt { font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; color: #646970; font-weight: 600; }
+.labelfill-data dd { margin: 3px 0 0; font-size: 13.5px; color: #1d2327; overflow-wrap: anywhere; }
+.labelfill-data dd .labelfill-svg { height: 22px; width: auto; display: block; }
+.labelfill-box.is-loading .labelfill-r { opacity: .5; }
+.labelfill-box.is-loading .labelfill-msg.is-info::before,
+.labelfill-tryout .labelfill-msg.is-info::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 8px; vertical-align: -2px; border: 2px solid #72aee6; border-right-color: transparent; border-radius: 50%; animation: labelfill-spin .8s linear infinite; }
+@keyframes labelfill-spin { to { transform: rotate(360deg); } }
+
+/* Manual switch */
+.labelfill-manual-toggle { display: flex; align-items: center; gap: 9px; margin-top: 18px; padding-top: 14px; border-top: 1px solid #f0f0f1; color: #50575e; cursor: pointer; }
+.labelfill-manual-toggle input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.labelfill-sw { width: 32px; height: 18px; border-radius: 9px; background: #8c8f94; position: relative; flex: none; transition: background .15s; }
+.labelfill-sw::after { content: ""; position: absolute; left: 2px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: left .15s; }
+.labelfill-manual-toggle input:checked + .labelfill-sw { background: var(--labelfill-g); }
+.labelfill-manual-toggle input:checked + .labelfill-sw::after { left: 16px; }
+.labelfill-manual-toggle input:focus-visible + .labelfill-sw { outline: 2px solid var(--labelfill-g); outline-offset: 2px; }
+.labelfill-manual { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 18px; margin-top: 12px; }
+.labelfill-manual[hidden] { display: none; }
+.labelfill-manual p { margin: 6px 0; }
+.labelfill-manual label, .labelfill-file__t { display: block; font-weight: 600; margin-bottom: 4px; }
+.labelfill-manual select { width: 100%; max-width: none; }
+.labelfill-file__name { margin-left: 6px; color: #50575e; font-size: 12.5px; }
+
+/* Shopper preview */
+.labelfill-r { background: linear-gradient(160deg, #f3faf6, #e4f1ea); border-left: 1px solid #dcdcde; padding: 16px 18px; }
+.labelfill-preview__k { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: #3c6b53; font-weight: 700; display: flex; justify-content: space-between; gap: 8px; }
+.labelfill-shopc { margin-top: 10px; background: #fff; border-radius: 12px; box-shadow: 0 8px 24px #0b3d2614, 0 0 0 1px #0b3d2612; padding: 14px; display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 14px; }
+.labelfill-shopc__im { display: block; width: 72px; height: 72px; border-radius: 9px; object-fit: cover; background: linear-gradient(135deg, #eef2ef, #dfe8e2); }
+.labelfill-shopc b { display: block; font-size: 14px; line-height: 1.3; color: #1f1c18; }
+.labelfill-shopc__pr { display: flex; align-items: center; gap: 7px; font-size: 21px; font-weight: 700; line-height: 1; margin-top: 8px; color: #1f1c18; }
+.labelfill-shopc a { display: inline-block; margin-top: 7px; font-size: 13px; color: #4d463d; text-decoration: underline; text-underline-offset: 3px; }
+.labelfill-labw { display: flex; gap: 14px; margin-top: 14px; align-items: flex-start; }
+.labelfill-labw img { width: 118px; height: auto; box-shadow: 0 8px 20px #0b3d261f; border-radius: 2px; flex: none; background: #fff; }
+.labelfill-labw p { margin: 0; font-size: 12.5px; color: #3c4f45; }
+.labelfill-labw p b { display: block; color: #1d2327; font-size: 13px; margin-bottom: 2px; }
+.labelfill-ghost { margin-top: 14px; border: 2px dashed #b7d6c4; border-radius: 12px; padding: 16px; color: #3c6b53; text-align: center; font-size: 13px; }
+
+@media (max-width: 1100px) {
+	.labelfill-box { grid-template-columns: minmax(0, 1fr); }
+	.labelfill-r { border-left: 0; border-top: 1px solid #dcdcde; }
+}
+@media (max-width: 600px) {
+	.labelfill-row { flex-direction: column; }
+	.labelfill-data, .labelfill-manual { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Variations */
+.labelfill-var input[type="text"] { width: 100%; font-family: Menlo, Consolas, monospace; }
+.labelfill-var__state { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 12.5px; color: #50575e; }
+.labelfill-var__state .labelfill-svg { height: 20px; width: auto; }
+
+/* Products list */
+.column-labelfill { width: 120px; }
+.labelfill-cell { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+.labelfill-cell.is-loading { opacity: .5; }
+.labelfill-mini .labelfill-svg { height: 20px; width: auto; display: block; }
+.labelfill-cell .labelfill-pill { font-size: 11px; padding: 1px 8px; white-space: normal; line-height: 1.35; border-radius: 10px; max-width: 100%; box-sizing: border-box; }
+
+/* Settings and wizard */
+.labelfill-title { font-weight: 700; }
+.labelfill-title::before { content: ""; display: inline-block; width: 22px; height: 22px; margin-right: 8px; vertical-align: -4px; border-radius: 6px; background: var(--labelfill-g); }
+.labelfill-card { background: #fff; border: 1px solid #dcdcde; border-radius: 10px; padding: 8px 24px 20px; margin-top: 16px; max-width: 920px; box-shadow: 0 1px 2px #0000000a; }
+.labelfill-wrap .button-primary.labelfill-btn, .labelfill-wrap .labelfill-btn { background: var(--labelfill-g); border-color: var(--labelfill-g); color: #fff; }
+.labelfill-wrap .labelfill-btn:hover, .labelfill-wrap .labelfill-btn:focus { background: #086640; border-color: #086640; color: #fff; }
+.labelfill-cats { display: flex; flex-wrap: wrap; gap: 8px; }
+.labelfill-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid #dcdcde; border-radius: 999px; background: #fff; cursor: pointer; }
+.labelfill-chip:has(input:checked) { border-color: var(--labelfill-g); background: var(--labelfill-g2); }
+.labelfill-wizard .labelfill-card { max-width: 720px; padding: 8px 28px 24px; }
+.labelfill-steps { display: flex; gap: 10px; margin: 18px 0 0; padding: 0; list-style: none; max-width: 720px; }
+.labelfill-steps li { flex: 1; display: flex; align-items: center; gap: 8px; margin: 0; padding: 10px 12px; border-radius: 8px; background: #fff; border: 1px solid #dcdcde; color: #646970; font-weight: 600; }
+.labelfill-steps li span { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #f0f0f1; font-size: 12px; }
+.labelfill-steps li.is-on { border-color: var(--labelfill-g); color: #1d2327; }
+.labelfill-steps li.is-on span, .labelfill-steps li.is-done span { background: var(--labelfill-g); color: #fff; }
+.labelfill-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.labelfill-choice { display: grid; gap: 10px; padding: 14px; border: 2px solid #dcdcde; border-radius: 10px; cursor: pointer; font-weight: 600; }
+.labelfill-choice:has(input:checked) { border-color: var(--labelfill-g); background: var(--labelfill-g2); }
+.labelfill-choice input { position: absolute; opacity: 0; }
+.labelfill-choice:has(input:focus-visible) { outline: 2px solid var(--labelfill-g); outline-offset: 2px; }
+.labelfill-choice__demo { display: flex; align-items: center; gap: 7px; font-size: 20px; font-weight: 700; padding: 12px; border-radius: 8px; background: #fff; }
+.labelfill-choice__demo.is-below { flex-direction: column; align-items: flex-start; }
+.labelfill-choice__demo .labelfill-svg { height: 1.24em; width: auto; }
+.labelfill-tryout { max-width: 420px; }
+.labelfill-nav { display: flex; align-items: center; gap: 14px; margin-top: 22px; }
+.labelfill-skip { color: #50575e; }
+
+/* Pro tab */
+.labelfill-pro h2 { font-size: 22px; }
+.labelfill-pro ul { list-style: none; margin: 16px 0; padding: 0; display: grid; gap: 10px; }
+.labelfill-pro li { padding-left: 28px; position: relative; font-size: 14px; }
+.labelfill-pro li::before { content: ""; position: absolute; left: 0; top: 1px; width: 18px; height: 18px; border-radius: 50%; background: var(--labelfill-g2); box-shadow: inset 0 0 0 5px var(--labelfill-g2), inset 0 0 0 9px var(--labelfill-g); }
+.labelfill-price { font-size: 15px; font-weight: 600; }
